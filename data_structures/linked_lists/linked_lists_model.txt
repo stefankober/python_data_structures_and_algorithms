@@ -17,7 +17,7 @@ Methods:
 - add item to middle: O(n), find predecessor, then just set pointers
 - remove item from middle: O(n), find node, set pointers
 - lookup (by index and value): O(n)
-- reverse can be done in O(n), however space complexity is also O(n)
+- reverse can be done in O(n)
 - set item by index is also O(n)
 - insert after also O(n)
 

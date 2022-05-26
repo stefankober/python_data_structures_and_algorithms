@@ -123,12 +123,14 @@ class LinkedList:
             return True
     
     def reverse(self):
-        temp_ll = LinkedList()
-        cursor = self.head
-        for i in range(self.len):
-            temp_ll.prepend(cursor)
-            cursor = cursor.next
-        return temp_ll
+        self.head, self.tail = self.tail, self.head
+        cursor = self.tail
+        after = cursor.next
+        before = None
+        cursor.next = before
+        while cursor != self.head:
+            before, cursor, after = cursor, after, after.next
+            cursor.next = before
         
     def __repr__(self):
         strg = ""

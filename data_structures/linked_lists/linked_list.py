@@ -29,6 +29,7 @@ class LinkedList:
             self.tail.next = Node(value, next=None)
             self.tail = self.tail.next
             self.len += 1
+        return True
 
     def remove_last(self):
         assert not self.len == 0, "Cannot remove last item from empty list"
@@ -108,6 +109,18 @@ class LinkedList:
             cursor = cursor.next
         cursor.value = value
         return True
+    
+    def insert_after(self, index, value):
+        assert self.len > index, "Index out of bounds" # indexing starts at 0
+        if index == self.len-1:
+            return self.append(value)
+        else:
+            cursor = self.head
+            for _ in range(index):
+                cursor = cursor.next
+            cursor.next = Node(value, cursor.next)
+            self.len += 1
+            return True
     
     def reverse(self):
         temp_ll = LinkedList()

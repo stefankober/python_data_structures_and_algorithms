@@ -19,5 +19,6 @@ Methods:
 - lookup (by index and value): O(n)
 - reverse can be done in O(n), however space complexity is also O(n)
 - set item by index is also O(n)
+- insert after also O(n)
 
 Nodes are objects in their own right, having at least a value and a next-pointer.

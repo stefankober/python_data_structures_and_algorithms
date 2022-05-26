@@ -16,7 +16,7 @@ class LinkedList:
     Creates an empty linked list
     """
     def __init__(self):
-        self.head = Node(None, None)
+        self.head = None
         self.tail = self.head
         self.len = 0
 
@@ -33,7 +33,7 @@ class LinkedList:
     def remove_last(self):
         assert not self.len == 0, "Cannot remove last item from empty list"
         if self.len == 1:
-            self.head = Node(None, None)
+            self.head = None
             self.tail = self.head
         else:
             cursor = self.head.next
@@ -86,6 +86,14 @@ class LinkedList:
                 return i
             cursor = cursor.next
         return -1
+    
+    def reverse(self):
+        temp_ll = LinkedList()
+        cursor = self.head
+        for i in range(self.len):
+            temp_ll.prepend(cursor)
+            cursor = cursor.next
+        return temp_ll
         
     def __repr__(self):
         strg = ""

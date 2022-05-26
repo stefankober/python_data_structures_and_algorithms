@@ -10,9 +10,9 @@ Instead:
 
 
 Methods:
-- append: O(1), point last node to new node, point tail to new node
-- remove last node: O(n), point prelast node to node, point tail to prelast node, but you need to find prelast node!
-- prepend: O(1), point new node to first node (=head), point head to new node
+- append: O(1), point last node.next to new node, point tail to new node
+- remove last node: O(n), point prelast node.next to None, point tail to prelast node, but you need to find prelast node!
+- prepend: O(1), point new node.next to first node (=head), point head to new node
 - remove first node: O(1), point head to 2nd node
 - add item to middle: O(n), find predecessor, then just set pointers
 - remove item from middle: O(n), find node, set pointers

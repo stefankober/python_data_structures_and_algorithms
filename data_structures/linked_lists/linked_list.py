@@ -32,16 +32,21 @@ class LinkedList:
 
     def remove_last(self):
         assert not self.len == 0, "Cannot remove last item from empty list"
+        value = self.tail.value
         if self.len == 1:
             self.head = None
             self.tail = self.head
+        elif self.len == 2:
+            self.tail = self.head
+            self.head.next = None
         else:
             cursor = self.head.next
-            for i in range(2, self.len):
+            while cursor.next.next is not None:
                 cursor = cursor.next
             self.tail = cursor
             self.tail.next = None
         self.len -= 1
+        return value
 
     def prepend(self, value):
         self.head = Node(value, self.head)
@@ -49,28 +54,35 @@ class LinkedList:
 
     def remove_first(self):
         assert not self.len == 0, "Cannot remove first item from empty list"
+        value = self.head.value
         self.head = self.head.next
         self.len -= 1
+        return value
         
     def remove_by_index(self, index):
         assert self.len > index, "Index out of bounds" # indexing starts at 0
         if index == 0:
-            self.remove_first()
+            return self.remove_first()
         elif index == self.len-1:
-            self.remove_last()
+            return self.remove_last()
         else:
             i = 0
             cursor = self.head
             while i != index-1:
                 cursor = cursor.next
                 i += 1
+            value = cursor.next.value
             cursor.next = cursor.next.next
-            self.len -= 1    
+            self.len -= 1
+            return value
         
     def remove_by_value(self, value):
         index = self.lookup_by_value(value)
         if index >= 0:
             self.remove_by_index(index)
+            return True
+        else:
+            return False
         
     def lookup_by_index(self, index):
         assert self.len > index >= 0, "Index out of bounds" # indexing starts at 0

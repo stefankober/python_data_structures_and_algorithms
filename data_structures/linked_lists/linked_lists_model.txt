@@ -18,4 +18,4 @@ Methods:
 - remove item from middle: O(n), find node, set pointers
 - lookup (by index and value): O(n)
 
-Nodes are objects in their own right, having at least a value and a nect-pointer.
+Nodes are objects in their own right, having at least a value and a next-pointer.

@@ -63,7 +63,7 @@ class LinkedList:
         return value
         
     def remove_by_index(self, index):
-        assert self.len > index, "Index out of bounds" # indexing starts at 0
+        assert self.len > index >= 0, "Index out of bounds" # indexing starts at 0
         if index == 0:
             return self.remove_first()
         elif index == self.len-1:
@@ -103,7 +103,7 @@ class LinkedList:
         return -1
     
     def set_by_index(self, index, value):
-        assert self.len > index, "Index out of bounds" # indexing starts at 0
+        assert self.len > index >= 0, "Index out of bounds" # indexing starts at 0
         cursor = self.head
         for _ in range(index):
             cursor = cursor.next
@@ -111,7 +111,7 @@ class LinkedList:
         return True
     
     def insert_after(self, index, value):
-        assert self.len > index, "Index out of bounds" # indexing starts at 0
+        assert self.len > index >= 0, "Index out of bounds" # indexing starts at 0
         if index == self.len-1:
             return self.append(value)
         else:

@@ -101,6 +101,14 @@ class LinkedList:
             cursor = cursor.next
         return -1
     
+    def set_by_index(self, index, value):
+        assert self.len > index, "Index out of bounds" # indexing starts at 0
+        cursor = self.head
+        for _ in range(index):
+            cursor = cursor.next
+        cursor.value = value
+        return True
+    
     def reverse(self):
         temp_ll = LinkedList()
         cursor = self.head

@@ -57,6 +57,8 @@ class LinkedList:
         value = self.head.value
         self.head = self.head.next
         self.len -= 1
+        if self.len == 0:
+            self.tail = self.head
         return value
         
     def remove_by_index(self, index):

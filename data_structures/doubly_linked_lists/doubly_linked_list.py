@@ -75,12 +75,71 @@ class DoublyLinkedList:
             cursor.value = value
         else:
             cursor = self.tail
-            print(self.len-index-1)
             for i in range(self.len-index-1):
                 cursor = cursor.prev
             cursor.value = value
         return True
     
+    def get_by_index(self, index):
+        assert 0 <= index < self.len, "Index out of bounds"
+        middle = int(self.len/2)
+        if index <= middle:
+            cursor = self.head
+            for i in range(index):
+                cursor = cursor.next
+            value = cursor.value
+        else:
+            cursor = self.tail
+            for i in range(self.len-index-1):
+                cursor = cursor.prev
+            value = cursor.value
+        return value       
+    
+    def insert_after_index(self, index, value):
+        assert 0 <= index < self.len, "Index out of bounds"
+        if self.len == 0:
+            return self.append(value)
+        middle = int(self.len/2)
+        if index <= middle:
+            cursor = self.head
+            for i in range(index):
+                cursor = cursor.next
+            cursor.next = Node(value, cursor, cursor.next)
+            cursor.next.next.prev = cursor.next
+        else:
+            cursor = self.tail
+            for i in range(self.len-index-1):
+                cursor = cursor.prev
+            cursor.next = Node(value, cursor, cursor.next)
+            cursor.next.next.prev = cursor.next
+        self.len += 1
+        return True      
+    
+    def remove_index(self, index):
+        assert 0 <= index < self.len, "Index out of bounds"
+        assert self.len != 0, "Cannot remove index from empty list"
+        if index == self.len-1:
+            return self.remove_last()
+        if index == 0:
+            return self.remove_first()
+        middle = int(self.len/2)
+        if index <= middle:
+            cursor = self.head
+            for i in range(index):
+                cursor = cursor.next
+            value = cursor.value
+            cursor.prev.next = cursor.next
+            cursor.next.prev = cursor.prev
+        else:
+            cursor = self.tail
+            for i in range(self.len-index-1):
+                cursor = cursor.prev
+            value = cursor.value
+            cursor.prev.next = cursor.next
+            cursor.next.prev = cursor.prev
+        self.len -= 1
+        return value
+
     def __repr__(self):
         strg = ""
         cursor = self.head

@@ -7,3 +7,9 @@ It is bascially an undirected linear graph
 
 * append: O(1)
 * remove_last: O(1)
+* prepend: O(1)
+* remove_first: O(1)
+* get by index: O(n)
+* set by index: O(n)
+* insert by index: O(n)
+* remove by index: O(n)

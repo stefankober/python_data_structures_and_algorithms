@@ -32,6 +32,18 @@ class DoublyLinkedList:
         self.len +=1
         return True
 
+    def remove_last(self):
+        if self.len == 1:
+            value = self.head.value
+            self.head = None
+            self.tail = self.head
+        else:
+            value = self.tail.value
+            self.tail = self.tail.prev
+            self.tail.next = None
+        self.len -= 1
+        return value
+    
     def __repr__(self):
         strg = ""
         cursor = self.head

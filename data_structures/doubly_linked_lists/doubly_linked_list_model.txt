@@ -5,4 +5,5 @@ Doubly linked lists expose:
 
 It is bascially an undirected linear graph
 
-* append
+* append: O(1)
+* remove_last: O(1)

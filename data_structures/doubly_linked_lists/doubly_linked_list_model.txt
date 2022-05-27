@@ -1,0 +1,8 @@
+Doubly linked lists expose:
+
+* head and tail
+* nodes that have value attribute alongside next and prev
+
+It is bascially an undirected linear graph
+
+* append

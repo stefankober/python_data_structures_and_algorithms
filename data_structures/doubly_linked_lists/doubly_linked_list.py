@@ -117,7 +117,6 @@ class DoublyLinkedList:
     
     def remove_index(self, index):
         assert 0 <= index < self.len, "Index out of bounds"
-        assert self.len != 0, "Cannot remove index from empty list"
         if index == self.len-1:
             return self.remove_last()
         if index == 0:

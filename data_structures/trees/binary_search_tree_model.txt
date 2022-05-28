@@ -1,0 +1,11 @@
+A bst exposes
+* a root node
+* for each node, up to two children, left and right
+* the valus are orderable (so comparable, and thus sortable), and each child to the left is smaller than the parent node, each child to the right is larger than the parent node
+* while one major purpose is to search if a value is in the tree, there is no use for duplication. 
+Methods:
+* Insert: O(log n)
+* Remove: O(log n)
+* Contains: O(log n)
+* Minimum value: O(log n)
+* Maximum value: O(log n)

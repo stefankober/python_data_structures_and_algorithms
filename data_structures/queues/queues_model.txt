@@ -1,0 +1,4 @@
+A queue exposes storage, and enqueue and dequeue methodes.
+Both are expected to be O(1).
+
+

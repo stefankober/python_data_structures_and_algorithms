@@ -6,7 +6,7 @@ class Stack:
     def __init__(self):
         self.lst = []
 
-    def len(self):
+    def height(self):
         return len(self.lst)
 
     def push(self, value):

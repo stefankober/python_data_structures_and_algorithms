@@ -16,23 +16,23 @@ class Stack:
     """
     def __init__(self):
         self.top = None
-        self.len = 0
+        self.height = 0
     
     def push(self, value):
         if len == 0:
             self.top = Node(value)
         else:
             self.top = Node(value, self.top)
-        self.len += 1
+        self.height += 1
 
     def pop(self):
-        if self.len == 0:
+        if self.height == 0:
             return None
-        elif self.len == 1:
+        elif self.height == 1:
             value = self.top.value
             self.head = None
         else:
             value = self.top.value
             self.top = self.top.next
-        self.len -=1
+        self.height -=1
         return value

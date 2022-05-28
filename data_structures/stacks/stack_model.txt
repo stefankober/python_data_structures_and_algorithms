@@ -1,0 +1,7 @@
+A stack exposes storage for values, and they can only be pushed on the stack one on top of the other, or the top value can be popped.
+
+One would expect order O(1) for both operations.
+
+This can be implemented for example with a singly linked list, even without tail.
+
+Adding or removing on the left end is O(1).

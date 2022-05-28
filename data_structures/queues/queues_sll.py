@@ -12,18 +12,18 @@ class Queue:
     """
     Queue sll style
     """
-    def __init__(self, head=None, tail=None):
+    def __init__(self, first=None, last=None):
         self.len = 0
-        self.head = head
-        self.tail = tail
+        self.first = first
+        self.last = last
 
     def enqueue(self, value):
         if self.len == 0:
-            self.tail = Node(value)
-            self.head = self.tail
+            self.last = Node(value)
+            self.first = self.last
         else:
-            self.tail.next = Node(value)
-            self.tail = self.tail.next
+            self.last.next = Node(value)
+            self.last = self.last.next
         self.len += 1
         return True
 
@@ -31,11 +31,11 @@ class Queue:
         if self.len == 0:
             return None
         if self.len == 1:
-            value = self.head.value
-            self.head = None
-            self.tail = self.head
+            value = self.first.value
+            self.first = None
+            self.last = self.first
         else:
-            value = self.head.value
-            self.head = self.head.next
+            value = self.first.value
+            self.first = self.first.next
         self.len -= 1
         return value

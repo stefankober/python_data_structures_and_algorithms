@@ -15,24 +15,24 @@ class Stack:
     SLL implementation of a stack
     """
     def __init__(self):
-        self.head = None
+        self.top = None
         self.len = 0
     
     def push(self, value):
         if len == 0:
-            self.head = Node(value)
+            self.top = Node(value)
         else:
-            self.head = Node(value, self.head)
+            self.top = Node(value, self.top)
         self.len += 1
 
     def pop(self):
         if self.len == 0:
             return None
         elif self.len == 1:
-            value = self.head.value
+            value = self.top.value
             self.head = None
         else:
-            value = self.head.value
-            selfhead = self.head.next
+            value = self.top.value
+            self.top = self.top.next
         self.len -=1
         return value

@@ -61,10 +61,20 @@ class BST:
 
     def remove(self, value):
         if value == self.root.value:
-            temp = self.root.left
-            self.root = self.root.right
-            self.insert(temp)
-            return True
+            if self.root.right == None and self.root.left == None:
+                self.root = None
+                return True
+            if self.root.right != None and self.root.left == None:
+                self.root = self.root.right
+                return True
+            if self.root.right == None and self.root.left != None:
+                self.root = self.root.left
+                return True
+            else:
+                temp = self.root.left
+                self.root = self.root.right
+                self.insert(temp)
+                return True
         else:
             temp = self.root
             before = None

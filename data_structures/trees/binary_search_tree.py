@@ -20,51 +20,89 @@ class BST:
     def __init__(self):
         self.root = None
     
-    def insert(self, value):
+    def insert(self, value_or_node):
+        if type(value_or_node) is not Node:
+            node = Node(value_or_node)
+        else:
+            node = value_or_node
         if self.root == None:
-            self.root = Node(value)
+            self.root = node
             return True
         else:
-            return self.recursive_insert(self.root, value)
+            temp = self.root
+            while True:
+                if node.value == temp.value:
+                    return False
+                elif node.value < temp.value: 
+                    if temp.left == None:
+                        temp.left = node
+                        return True
+                    else: 
+                        temp = temp.left
+                elif node.value > temp.value:
+                    if  temp.right == None:
+                        temp.right = node
+                        return True
+                    else:
+                        temp = temp.right
 
-    def recursive_insert(self, node, value):
-        if value == node.value:
-            return None
-        if value < node.value and node.left == None:
-            node.left = Node(value)
-            return True
-        elif  value < node.value and node.left != None:
-            return self.recursive_insert(node.left, value)
-        elif value > node.value and node.right == None:
-            node.right = Node(value)
-            return True
-        elif  value > node.value and node.right != None:
-            return self.recursive_insert(node.right, value)
-
-    def contains(self, value, return_parent=False):
+    def contains(self, value):
         if self.root == None:
             return False
-        elif value == self.root.value and not return_parent:
-            return True
-        elif value == self.root.value and return_parent:
-            return None
-        else:
-            return self.recursive_contains(value, self.root, return_parent=return_parent)
+        temp = self.root
+        while temp != None:
+            if temp.value == value:
+                return True
+            elif value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+        return False
 
-    def recursive_contains(self, value, node, return_parent):
-        if not node.left and value < node.value:
-            return False
-        elif not node.right and value > node.value:
-            return False
-        elif node.left and value == node.left.value and not return_parent:
+    def remove(self, value):
+        if value == self.root.value:
+            temp = self.root.left
+            self.root = self.root.right
+            self.insert(temp)
             return True
-        elif node.right and value == node.right.value and not return_parent:
-            return True
-        elif node.left and value == node.left.value and return_parent:
-            return node
-        elif node.right and value == node.right.value and return_parent:
-            return node
-        elif value < node.value:
-            return self.recursive_contains(value, node.left, return_parent=return_parent)
-        elif value > node.value:
-            return self.recursive_contains(value, node.right, return_parent=return_parent)
+        else:
+            temp = self.root
+            before = None
+            while temp != None:
+                if value == temp.value:
+                    if value < before.value:
+                        if temp.left == None and temp.right == None:
+                            before.left = None
+                            return True
+                        elif  temp.left == None and temp.right != None:
+                            before.left = temp.right
+                            return True
+                        elif temp.left != None and temp.right == None:
+                            before.left = temp.left
+                            return True
+                        else:
+                            before.left = temp.right
+                            self.insert(temp.left)
+                            return True
+                    elif value > before.value:
+                        if temp.left == None and temp.right == None:
+                            before.right = None
+                            return True
+                        elif  temp.left == None and temp.right != None:
+                            before.right = temp.right
+                            return True
+                        elif temp.right != None and temp.right == None:
+                            before.left = temp.left
+                            return True
+                        else:
+                            before.right = temp.right
+                            self.insert(temp.left)
+                            return True
+                elif value < temp.value:
+                    before = temp
+                    temp = temp.left
+                elif value > temp.value:
+                    before = temp
+                    temp = temp.right
+            return False
+

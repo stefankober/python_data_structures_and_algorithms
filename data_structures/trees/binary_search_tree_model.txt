@@ -9,3 +9,5 @@ Methods:
 * Contains: O(log n)
 * Minimum value: O(log n)
 * Maximum value: O(log n)
+
+Technically though, the worst case is that we are looking at a linked list (if the tree is completely unbalanced)

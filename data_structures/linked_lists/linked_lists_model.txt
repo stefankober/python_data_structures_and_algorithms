@@ -22,3 +22,5 @@ Methods:
 - insert after also O(n)
 
 Nodes are objects in their own right, having at least a value and a next-pointer.
+
+Linked list are basically a directed linear graph (a path graph).

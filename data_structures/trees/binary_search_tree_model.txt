@@ -5,9 +5,9 @@ A bst exposes
 * while one major purpose is to search if a value is in the tree, there is no use for duplication. 
 Methods:
 * Insert: O(n)
-* Remove: O(log n)
-* Contains: O(log n)
-* Minimum value: O(log n)
-* Maximum value: O(log n)
+* Remove: O(n)
+* Contains: O(n)
+* Minimum value: O(n)
+* Maximum value: O(n)
 
-Average case insert is \Theta(log n)
+But average case insert is for all \theta(log n)

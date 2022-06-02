@@ -118,8 +118,6 @@ class BST:
             return False
 
     def get(self, key):
-        if self.root == None:
-            return False
         temp = self.root
         while temp != None:
             if temp.key == key:

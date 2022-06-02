@@ -113,4 +113,15 @@ class BST:
                     before = temp
                     temp = temp.right
             return False
-
+    
+    def minimum_value(self):
+        temp = self.root
+        while temp.left != None:
+            temp = temp.left
+        return temp.value
+    
+    def maximum_value(self):
+        temp = self.root
+        while temp.right != None:
+            temp = temp.right
+        return temp.value
